@@ -13,7 +13,7 @@ plugins:
 functions:
   registerCar:
     name: ${self:service}_register-car_${self:provider.stage}
-    handler: src/controllers/car/_handler.registerCar
+    handler: src/controllers/cars/_handler.registerCar
     description: Function to register car in the platform
     timeout: 30
     memorySize: 256
@@ -26,7 +26,7 @@ functions:
 
   editCar:
     name: ${self:service}_edit-car_${self:provider.stage}
-    handler: src/controllers/car/_handler.editCar
+    handler: src/controllers/cars/_handler.editCar
     description: Function to edit an already registered car
     timeout: 30
     memorySize: 256
@@ -39,7 +39,7 @@ functions:
 
   DeleteCar:
     name: ${self:service}_delete-car_${self:provider.stage}
-    handler: src/controllers/car/_handler.deleteCar
+    handler: src/controllers/cars/_handler.deleteCar
     description: Function for logically deleting a car
     timeout: 30
     memorySize: 256
@@ -52,7 +52,7 @@ functions:
 
   getCar:
     name: ${self:service}_get-car-by-id_${self:provider.stage}
-    handler: src/controllers/car/_handler.getCarById
+    handler: src/controllers/cars/_handler.getCarById
     description: Function fot get a car by id
     timeout: 30
     memorySize: 256
@@ -65,7 +65,7 @@ functions:
 
   getAllCars:
     name: ${self:service}_get-cars_${self:provider.stage}
-    handler: src/controllers/car/_handler.getAllCars
+    handler: src/controllers/cars/_handler.getAllCars
     description: Function for to get all car
     timeout: 30
     memorySize: 256
@@ -138,6 +138,59 @@ functions:
     events:
       - http:
           path: clients
+          method: GET
+          cors: false
+          private: false
+
+  # CarsRent
+  registerCarsRent:
+    name: ${self:service}_register-carsRent_${self:provider.stage}
+    handler: src/controllers/carsRent/_handler.registerCarsRent
+    description: Function to register car rent in the platform
+    timeout: 30
+    memorySize: 256
+    events:
+      - http:
+          path: carsRent
+          method: POST
+          cors: false
+          private: false
+
+  DeleteCarsRent:
+    name: ${self:service}_delete-carsRent_${self:provider.stage}
+    handler: src/controllers/carsRent/_handler.deleteCarsRent
+    description: Function for logically deleting a car rent
+    timeout: 30
+    memorySize: 256
+    events:
+      - http:
+          path: carsRent/{carsRentId}
+          method: DELETE
+          cors: false
+          private: false
+
+  getCarsRent:
+    name: ${self:service}_get-carsRent-by-id_${self:provider.stage}
+    handler: src/controllers/carsRent/_handler.getCarsRentById
+    description: Function fot get a car rent by id
+    timeout: 30
+    memorySize: 256
+    events:
+      - http:
+          path: carsRent/{carsRentId}
+          method: GET
+          cors: false
+          private: false
+
+  getAllCarsRent:
+    name: ${self:service}_get-carsRent_${self:provider.stage}
+    handler: src/controllers/carsRent/_handler.getAllCarsRent
+    description: Function for to get all car rent
+    timeout: 30
+    memorySize: 256
+    events:
+      - http:
+          path: carsRent
           method: GET
           cors: false
           private: false

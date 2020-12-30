@@ -5,7 +5,6 @@ const retrieveController = require('./retrive.controller.');
 
 const executeControllerFunction = async (functionToExecute, event) => {
   try {
-    console.log('------ GAI -------', event);
     const result = await functionToExecute(event);
     return result;
   } 
