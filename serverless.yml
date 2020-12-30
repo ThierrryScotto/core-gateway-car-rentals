@@ -11,11 +11,9 @@ plugins:
   - serverless-offline
 
 functions:
-
-  # Cars
   registerCar:
     name: ${self:service}_register-car_${self:provider.stage}
-    handler: src/controllers/cars/_handler.registerCar
+    handler: src/controllers/car/_handler.registerCar
     description: Function to register car in the platform
     timeout: 30
     memorySize: 256
@@ -28,7 +26,7 @@ functions:
 
   editCar:
     name: ${self:service}_edit-car_${self:provider.stage}
-    handler: src/controllers/cars/_handler.editCar
+    handler: src/controllers/car/_handler.editCar
     description: Function to edit an already registered car
     timeout: 30
     memorySize: 256
@@ -41,7 +39,7 @@ functions:
 
   DeleteCar:
     name: ${self:service}_delete-car_${self:provider.stage}
-    handler: src/controllers/cars/_handler.deleteCar
+    handler: src/controllers/car/_handler.deleteCar
     description: Function for logically deleting a car
     timeout: 30
     memorySize: 256
@@ -54,7 +52,7 @@ functions:
 
   getCar:
     name: ${self:service}_get-car-by-id_${self:provider.stage}
-    handler: src/controllers/cars/_handler.getCarById
+    handler: src/controllers/car/_handler.getCarById
     description: Function fot get a car by id
     timeout: 30
     memorySize: 256
@@ -67,7 +65,7 @@ functions:
 
   getAllCars:
     name: ${self:service}_get-cars_${self:provider.stage}
-    handler: src/controllers/cars/_handler.getAllCars
+    handler: src/controllers/car/_handler.getAllCars
     description: Function for to get all car
     timeout: 30
     memorySize: 256
@@ -133,13 +131,13 @@ functions:
 
   getAllClientss:
     name: ${self:service}_get-clients_${self:provider.stage}
-    handler: src/controllers/clients/_handler.getAllClientss
+    handler: src/controllers/clients/_handler.getAllClients
     description: Function for to get all client
     timeout: 30
     memorySize: 256
     events:
       - http:
-          path: cars
+          path: clients
           method: GET
           cors: false
           private: false

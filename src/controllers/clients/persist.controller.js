@@ -30,6 +30,7 @@ const _validateEditBody = (body) => {
     'properties': {
       'address':    { 'type': 'object' },
       'profession': { 'type': 'string' },
+      "status":     { 'type': 'number' },
     },
     'required': ['address', 'profession']
   };
@@ -65,8 +66,10 @@ async function editClient(event) {
     }
   }
 
-  clientFound.model           = body.address;
-  clientFound.totalKilometers = body.profession;
+
+  clientFound.status     = body.status;
+  clientFound.address    = body.address;
+  clientFound.profession = body.profession;
   clientFound. updatedAt      = new Date();
 
   await clientFound.save();
