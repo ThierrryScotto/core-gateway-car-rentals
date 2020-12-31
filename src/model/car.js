@@ -1,7 +1,7 @@
 'use strict';
 
 // imports
-const mongoose         = require('../service/db/index');
+const mongoose         = require('../services/db/index');
 
 const Schema = mongoose.Schema;
 

@@ -3,10 +3,13 @@
 // validate body
 const validator = require('../../helpers/validate.helpers');
 
-// modela
+// models
 const CarsRent = require('../../model/carsRent');
 const Clients  = require('../../model/client');
 const Cars     = require('../../model/car');
+
+// sns 
+const sns = require('../../services/sns');
 
 // private
 const _validateRegisterBody = (body) => {
@@ -36,6 +39,8 @@ async function registerCarsRent(event) {
     }
     
     const carsRentCreated = await CarsRent.create(body);
+
+    await sns.sendSMS(clientsFound, carFound);
 
     return { statusCode: 201, body: JSON.stringify(carsRentCreated) }
   } catch (err) {
